@@ -30,8 +30,7 @@
   <!-- 🔹 Header -->
   <header class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
     <div class="flex items-center gap-2 text-lg font-bold">
-      <!-- Hamburger only on mobile -->
-      <button class="md:hidden p-2 rounded-lg bg-blue-500 hover:bg-blue-400" onclick="toggleSidebar()" title="Menu">
+      <button class="md:hidden p-2 rounded bg-blue-700 hover:bg-blue-500" onclick="toggleSidebar()" title="Menu">
         <i class="fas fa-bars"></i>
       </button>
       <i class="fas fa-code"></i> Smart Code Viewer
@@ -44,72 +43,47 @@
     </div>
   </header>
 
-  <main class="flex flex-1">
+  <main class="flex flex-1 flex-col md:flex-row">
     <!-- 🔹 Sidebar -->
     <aside id="sidebar" 
-      class="sidebar fixed md:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 transform -translate-x-full md:translate-x-0 z-50">
-      
-      <!-- Close button (only mobile) -->
-      <div class="flex justify-between items-center md:hidden mb-4">
-        <h3 class="font-semibold text-lg">Files</h3>
-        <button class="p-2 rounded-lg bg-red-500 text-white" onclick="toggleSidebar()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-
-      <h3 class="font-semibold hidden md:block">Files</h3>
+      class="sidebar fixed md:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 border-r 
+             border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 transform -translate-x-full md:translate-x-0 z-50">
+      <h3 class="font-semibold">Files</h3>
       <div class="file-list flex flex-col gap-2 text-sm">
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')">
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+                    hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')">
           <i class="fab fa-python"></i> 01_first.py
         </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('02_constants.py')">
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+                    hover:bg-blue-500 hover:text-white" onclick="loadCode('02_constants.py')">
           <i class="fab fa-python"></i> 02_constants.py
         </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('03_indentation.py')">
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+                    hover:bg-blue-500 hover:text-white" onclick="loadCode('03_indentation.py')">
           <i class="fab fa-python"></i> 03_indentation.py
         </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('04_comment.py')">
-          <i class="fab fa-python"></i> 04_comment.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('05_complex-num.py')">
-          <i class="fab fa-python"></i> 05_complex-num.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('06_bool.py')">
-          <i class="fab fa-python"></i> 06_bool.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('07_set.py')">
-          <i class="fab fa-python"></i> 07_set.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('08_set-functions.py')">
-          <i class="fab fa-python"></i> 08_set-functions.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('09_format.py')">
-          <i class="fab fa-python"></i> 09_format.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('10_swap-variables.py')">
-          <i class="fab fa-python"></i> 10_swap-variables.py
-        </div>
       </div>
-
-      <h3 class="font-semibold mt-4">Mini Projects</h3>
+      <h3 class="font-semibold">Mini Projects</h3>
       <div class="file-list flex flex-col gap-2 text-sm">
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('c2f.py')">
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+                    hover:bg-blue-500 hover:text-white" onclick="loadCode('c2f.py')">
           <i class="fab fa-python"></i> c2f.py
         </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('color.py')">
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+                    hover:bg-blue-500 hover:text-white" onclick="loadCode('color.py')">
           <i class="fab fa-python"></i> color.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('color-2.py')">
-          <i class="fab fa-python"></i> color-2.py
         </div>
       </div>
     </aside>
 
+    <!-- 🔹 Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden" onclick="toggleSidebar()"></div>
+
     <!-- 🔹 Content -->
-    <section class="content flex-1 p-4 md:p-6 overflow-y-auto fade-in">
+    <section class="content flex-1 p-6 overflow-y-auto fade-in">
       <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
         <h2 class="text-2xl font-semibold flex items-center gap-2"><i class="fas fa-eye"></i> Code Preview</h2>
-        <div class="flex gap-2 flex-wrap">
+        <div class="flex gap-2">
           <button id="copy-btn" class="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center gap-1" onclick="copyCode()">
             <i class="fas fa-copy"></i> Copy
           </button>
@@ -139,7 +113,8 @@
   </main>
 
   <!-- 🔹 Settings Panel -->
-  <div id="settings-panel" class="settings-panel fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform z-50">
+  <div id="settings-panel" class="settings-panel fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 border-l 
+                                  border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform">
     <h3 class="text-lg font-semibold mb-4"><i class="fas fa-sliders-h"></i> Settings</h3>
     <label class="block mb-1">Font Size</label>
     <input type="range" id="font-size-slider" min="12" max="24" value="16" class="w-full" oninput="changeFontSize(this.value)">
@@ -212,6 +187,15 @@
       document.querySelector(".line-numbers").style.fontSize = `${size}px`;
     }
 
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      sidebar.classList.toggle("-translate-x-full");
+      overlay.classList.toggle("hidden");
+    }
+
+    // 🐍 Run Python
     function runPythonCode() {
       let code = document.getElementById("code-block").textContent;
       let outputBox = document.getElementById("python-output");
@@ -232,10 +216,6 @@
 
       Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true))
       .catch((err) => { outputBox.textContent = err.toString(); });
-    }
-
-    function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("-translate-x-full");
     }
   </script>
 </body>
