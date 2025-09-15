@@ -40,9 +40,9 @@
     </div>
   </header>
 
-  <main class="flex flex-1">
+  <main class="flex flex-1 flex-col md:flex-row">
     <!-- 🔹 Sidebar -->
-    <aside id="sidebar" class="sidebar w-72 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 h-full">
+    <aside id="sidebar" class="sidebar w-full md:w-72 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 h-auto md:h-full">
       <h3 class="font-semibold">Files</h3>
       <div class="file-list flex flex-col gap-2 text-sm">
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')">
@@ -75,33 +75,26 @@
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('10_swap-variables.py')">
           <i class="fab fa-python"></i> 10_swap-variables.py
         </div>
-       
-       
       </div>
       <h3 class="font-semibold">Mini Projects</h3>
       <div class="file-list flex flex-col gap-2 text-sm">
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('c2f.py')">
           <i class="fab fa-python"></i> c2f.py
         </div>
-        
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('color.py')">
           <i class="fab fa-python"></i> color.py
         </div>
-        
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('color-2.py')">
           <i class="fab fa-python"></i> color-2.py
         </div>
-        
-        </div>
-       
       </div>
     </aside>
 
     <!-- 🔹 Content -->
-    <section class="content flex-1 p-6 overflow-y-auto fade-in">
+    <section class="content flex-1 p-4 md:p-6 overflow-y-auto fade-in">
       <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
         <h2 class="text-2xl font-semibold flex items-center gap-2"><i class="fas fa-eye"></i> Code Preview</h2>
-        <div class="flex gap-2">
+        <div class="flex gap-2 flex-wrap">
           <button id="copy-btn" class="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center gap-1" onclick="copyCode()">
             <i class="fas fa-copy"></i> Copy
           </button>
@@ -114,13 +107,13 @@
         </div>
       </div>
 
-      <div class="code-container rounded-lg">
+      <div class="code-container rounded-lg overflow-x-auto">
         <pre class="line-numbers p-4"></pre>
-        <pre><code id="code-block" class="language-none"></code></pre>
+        <pre class="p-4"><code id="code-block" class="language-none"></code></pre>
       </div>
 
       <!-- Live Preview -->
-      <iframe id="live-preview" class="w-full h-[300px] mt-6 rounded-lg shadow-lg bg-white"></iframe>
+      <iframe id="live-preview" class="w-full h-60 sm:h-72 md:h-[300px] mt-6 rounded-lg shadow-lg bg-white"></iframe>
 
       <!-- Python Output -->
       <div id="python-output-box" class="hidden mt-6">
@@ -155,7 +148,6 @@
         const codeBlock = document.getElementById("code-block");
         const ext = filename.split('.').pop();
 
-        // language highlight
         if (ext === "css") codeBlock.className = "language-css";
         else if (ext === "js") codeBlock.className = "language-javascript";
         else if (ext === "py") codeBlock.className = "language-python";
@@ -165,7 +157,6 @@
         hljs.highlightElement(codeBlock);
         updateLineNumbers(text);
 
-        // hide/show preview/output
         document.getElementById("live-preview").style.display = ext === "html" ? "block" : "none";
         if (ext === "html") document.getElementById("live-preview").srcdoc = text;
 
@@ -206,7 +197,6 @@
       document.querySelector(".line-numbers").style.fontSize = `${size}px`;
     }
 
-    // 🐍 Run Python
     function runPythonCode() {
       let code = document.getElementById("code-block").textContent;
       let outputBox = document.getElementById("python-output");
