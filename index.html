@@ -30,6 +30,10 @@
   <!-- 🔹 Header -->
   <header class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
     <div class="flex items-center gap-2 text-lg font-bold">
+      <!-- Hamburger only on mobile -->
+      <button class="md:hidden p-2 rounded-lg bg-blue-500 hover:bg-blue-400" onclick="toggleSidebar()" title="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
       <i class="fas fa-code"></i> Smart Code Viewer
     </div>
     <div class="flex items-center gap-3">
@@ -40,10 +44,20 @@
     </div>
   </header>
 
-  <main class="flex flex-1 flex-col md:flex-row">
+  <main class="flex flex-1">
     <!-- 🔹 Sidebar -->
-    <aside id="sidebar" class="sidebar w-full md:w-72 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 h-auto md:h-full">
-      <h3 class="font-semibold">Files</h3>
+    <aside id="sidebar" 
+      class="sidebar fixed md:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 transform -translate-x-full md:translate-x-0 z-50">
+      
+      <!-- Close button (only mobile) -->
+      <div class="flex justify-between items-center md:hidden mb-4">
+        <h3 class="font-semibold text-lg">Files</h3>
+        <button class="p-2 rounded-lg bg-red-500 text-white" onclick="toggleSidebar()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <h3 class="font-semibold hidden md:block">Files</h3>
       <div class="file-list flex flex-col gap-2 text-sm">
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')">
           <i class="fab fa-python"></i> 01_first.py
@@ -76,7 +90,8 @@
           <i class="fab fa-python"></i> 10_swap-variables.py
         </div>
       </div>
-      <h3 class="font-semibold">Mini Projects</h3>
+
+      <h3 class="font-semibold mt-4">Mini Projects</h3>
       <div class="file-list flex flex-col gap-2 text-sm">
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('c2f.py')">
           <i class="fab fa-python"></i> c2f.py
@@ -124,7 +139,7 @@
   </main>
 
   <!-- 🔹 Settings Panel -->
-  <div id="settings-panel" class="settings-panel fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform">
+  <div id="settings-panel" class="settings-panel fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform z-50">
     <h3 class="text-lg font-semibold mb-4"><i class="fas fa-sliders-h"></i> Settings</h3>
     <label class="block mb-1">Font Size</label>
     <input type="range" id="font-size-slider" min="12" max="24" value="16" class="w-full" oninput="changeFontSize(this.value)">
@@ -217,6 +232,10 @@
 
       Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true))
       .catch((err) => { outputBox.textContent = err.toString(); });
+    }
+
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("-translate-x-full");
     }
   </script>
 </body>
