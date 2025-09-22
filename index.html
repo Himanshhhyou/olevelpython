@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Code Viewer</title>
 
   <!-- Highlight.js Theme -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="hljs-theme" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css"
+    id="hljs-theme" />
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <!-- Tailwind CSS -->
@@ -16,15 +18,53 @@
   <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
 
   <style>
-    .sidebar { transition: transform 0.3s ease; }
-    .fade-in { animation: fadeIn 0.5s ease-in; }
-    .code-container { display: flex; width: 100%; background: #0d1117; border-radius: 0.5rem; overflow-x: auto; }
-    pre { margin: 0; white-space: pre-wrap; word-wrap: break-word; flex-shrink: 0; }
-    .line-numbers { user-select: none; padding-right: 1rem; color: #6b7280; background: #1e293b; text-align: right; }
-    .settings-panel { transition: transform 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .sidebar {
+      transition: transform 0.3s ease;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .code-container {
+      display: flex;
+      width: 100%;
+      background: #0d1117;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      flex-shrink: 0;
+    }
+
+    .line-numbers {
+      user-select: none;
+      padding-right: 1rem;
+      color: #6b7280;
+      background: #1e293b;
+      text-align: right;
+    }
+
+    .settings-panel {
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
+
 <body class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
 
   <!-- 🔹 Header -->
@@ -45,90 +85,94 @@
 
   <main class="flex flex-1 flex-col md:flex-row">
     <!-- 🔹 Sidebar -->
-    <aside id="sidebar" 
+    <aside id="sidebar"
       class="sidebar fixed md:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 border-r 
              border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 transform -translate-x-full md:translate-x-0 z-50">
       <h3 class="font-semibold">Files</h3>
-    <div class="file-list flex flex-col gap-2 text-sm">
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+      <div class="file-list flex flex-col gap-2 text-sm">
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')">
-    <i class="fab fa-python"></i> 01_first.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 01_first.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('02_constants.py')">
-    <i class="fab fa-python"></i> 02_constants.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 02_constants.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('03_indentation.py')">
-    <i class="fab fa-python"></i> 03_indentation.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 03_indentation.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('04_comment.py')">
-    <i class="fab fa-python"></i> 04_comment.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 04_comment.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('05_complex-num.py')">
-    <i class="fab fa-python"></i> 05_complex-num.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 05_complex-num.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('06_bool.py')">
-    <i class="fab fa-python"></i> 06_bool.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 06_bool.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('07_set.py')">
-    <i class="fab fa-python"></i> 07_set.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 07_set.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('08_set-functions.py')">
-    <i class="fab fa-python"></i> 08_set-functions.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 08_set-functions.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('09_format.py')">
-    <i class="fab fa-python"></i> 09_format.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 09_format.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('10_swap-variables.py')">
-    <i class="fab fa-python"></i> 10_swap-variables.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 10_swap-variables.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('11_swap-variables-2.py')">
-    <i class="fab fa-python"></i> 11_swap_variables-2.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 11_swap_variables-2.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('12_swap-variables-3.py')">
-    <i class="fab fa-python"></i> 12_swap-variables-3.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 12_swap-variables-3.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('13_list.py')">
-    <i class="fab fa-python"></i> 13_list.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 13_list.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('14_tuple.py')">
-    <i class="fab fa-python"></i> 14_tuple.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 14_tuple.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('15_dict.py')">
-    <i class="fab fa-python"></i> 15_dict.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 15_dict.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('16_input.py')">
-    <i class="fab fa-python"></i> 16_input.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 16_input.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('17_eval.py')">
-    <i class="fab fa-python"></i> 17_eval.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 17_eval.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('18_min-max.py')">
-    <i class="fab fa-python"></i> 18_min-max.py
-  </div>
-  <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+          <i class="fab fa-python"></i> 18_min-max.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
               hover:bg-blue-500 hover:text-white" onclick="loadCode('19_print.py')">
-    <i class="fab fa-python"></i> 19_print.py
-  </div>
-
-
+          <i class="fab fa-python"></i> 19_print.py
+        </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+              hover:bg-blue-500 hover:text-white" onclick="loadCode('20_print-2.py')">
+          <i class="fab fa-python"></i> 20_print-2.py
+        </div>
       </div>
+
+
       <h3 class="font-semibold">Mini Projects</h3>
       <div class="file-list flex flex-col gap-2 text-sm">
         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
@@ -147,24 +191,35 @@
                     hover:bg-blue-500 hover:text-white" onclick="loadCode('simpleInterest.py')">
           <i class="fab fa-python"></i> simpleInterest.py
         </div>
+        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
+                    hover:bg-blue-500 hover:text-white" onclick="loadCode('rock-paper-scissor.py')">
+          <i class="fab fa-python"></i> rock-paper-scissor.py
+        </div>
       </div>
     </aside>
 
     <!-- 🔹 Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden" onclick="toggleSidebar()"></div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden" onclick="toggleSidebar()">
+    </div>
 
     <!-- 🔹 Content -->
     <section class="content flex-1 p-6 overflow-y-auto fade-in">
       <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
         <h2 class="text-2xl font-semibold flex items-center gap-2"><i class="fas fa-eye"></i> Code Preview</h2>
         <div class="flex gap-2">
-          <button id="copy-btn" class="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center gap-1" onclick="copyCode()">
+          <button id="copy-btn"
+            class="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center gap-1"
+            onclick="copyCode()">
             <i class="fas fa-copy"></i> Copy
           </button>
-          <button id="download-btn" class="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-1" onclick="downloadCode()">
+          <button id="download-btn"
+            class="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-1"
+            onclick="downloadCode()">
             <i class="fas fa-download"></i> Download
           </button>
-          <button id="run-btn" class="hidden p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center gap-1" onclick="runPythonCode()">
+          <button id="run-btn"
+            class="hidden p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center gap-1"
+            onclick="runPythonCode()">
             <i class="fas fa-play"></i> Run Python
           </button>
         </div>
@@ -187,11 +242,13 @@
   </main>
 
   <!-- 🔹 Settings Panel -->
-  <div id="settings-panel" class="settings-panel fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 border-l 
+  <div id="settings-panel"
+    class="settings-panel fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 border-l 
                                   border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform">
     <h3 class="text-lg font-semibold mb-4"><i class="fas fa-sliders-h"></i> Settings</h3>
     <label class="block mb-1">Font Size</label>
-    <input type="range" id="font-size-slider" min="12" max="24" value="16" class="w-full" oninput="changeFontSize(this.value)">
+    <input type="range" id="font-size-slider" min="12" max="24" value="16" class="w-full"
+      oninput="changeFontSize(this.value)">
     <button class="mt-4 p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 w-full" onclick="toggleSettings()">
       Close
     </button>
@@ -289,9 +346,9 @@
       });
 
       Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true))
-      .catch((err) => { outputBox.textContent = err.toString(); });
+        .catch((err) => { outputBox.textContent = err.toString(); });
     }
   </script>
 </body>
-</html>
 
+</html>
