@@ -4,20 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Code Viewer</title>
+  <title>Python Code Viewer</title>
 
   <!-- Highlight.js Theme -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css"
-    id="hljs-theme" />
-  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Skulpt for Python -->
-  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
 
   <style>
+    body {
+      color: #363636;
+      background-color: #f9f9f9;
+    }
+
     .sidebar {
       transition: transform 0.3s ease;
     }
@@ -26,31 +27,38 @@
       animation: fadeIn 0.5s ease-in;
     }
 
-    .code-container {
+    .code-output-container {
       display: flex;
+      flex-direction: column;
       width: 100%;
-      background: #0d1117;
       border-radius: 0.5rem;
-      overflow-x: auto;
+      overflow: hidden;
+      background: #fdfdfd;
+      border: 1px solid #ddd;
     }
 
-    pre {
-      margin: 0;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      flex-shrink: 0;
+    .code-block-wrapper {
+      display: flex;
+      width: 100%;
+      overflow-x: auto;
     }
 
     .line-numbers {
       user-select: none;
-      padding-right: 1rem;
+      padding: 1rem 0.5rem;
       color: #6b7280;
-      background: #1e293b;
+      background: #f3f3f3;
       text-align: right;
+      border-right: 1px solid #ddd;
+      min-width: 3rem;
     }
 
-    .settings-panel {
-      transition: transform 0.3s ease;
+    pre.code {
+      margin: 0;
+      padding: 1rem;
+      white-space: pre;
+      flex: 1;
+      overflow-x: auto;
     }
 
     @keyframes fadeIn {
@@ -65,204 +73,121 @@
   </style>
 </head>
 
-<body class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+<body class="font-sans">
 
-  <!-- 🔹 Header -->
-  <header class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+  <!-- Header -->
+  <header class="bg-white text-gray-800 p-4 flex justify-between items-center shadow-md">
     <div class="flex items-center gap-2 text-lg font-bold">
-      <button class="md:hidden p-2 rounded bg-blue-700 hover:bg-blue-500" onclick="toggleSidebar()" title="Menu">
-        <i class="fas fa-bars"></i>
-      </button>
-      <i class="fas fa-code"></i> Smart Code Viewer
+      <i class="fas fa-code"></i> Python Code Viewer
     </div>
     <div class="flex items-center gap-3">
-      <!-- Settings -->
-      <button class="p-2 rounded-full bg-gray-700 hover:bg-gray-600" onclick="toggleSettings()" title="Settings">
-        <i class="fas fa-cog"></i>
+      <button id="menu-btn" class="text-2xl md:hidden p-2 rounded hover:bg-gray-200" onclick="toggleSidebar()">
+        <i id="hamburger-icon" class="fas fa-bars"></i>
       </button>
     </div>
   </header>
 
-  <main class="flex flex-1 flex-col md:flex-row">
-    <!-- 🔹 Sidebar -->
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-25 hidden z-40" onclick="closeSidebar()"></div>
+
+  <main class="flex flex-1">
+    <!-- Sidebar -->
     <aside id="sidebar"
-      class="sidebar fixed md:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 border-r 
-             border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-4 transform -translate-x-full md:translate-x-0 z-50">
-      <h3 class="font-semibold">Files</h3>
-      <div class="file-list flex flex-col gap-2 text-sm">
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')">
-          <i class="fab fa-python"></i> 01_first.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('02_constants.py')">
-          <i class="fab fa-python"></i> 02_constants.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('03_indentation.py')">
-          <i class="fab fa-python"></i> 03_indentation.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('04_comment.py')">
-          <i class="fab fa-python"></i> 04_comment.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('05_complex-num.py')">
-          <i class="fab fa-python"></i> 05_complex-num.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('06_bool.py')">
-          <i class="fab fa-python"></i> 06_bool.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('07_set.py')">
-          <i class="fab fa-python"></i> 07_set.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('08_set-functions.py')">
-          <i class="fab fa-python"></i> 08_set-functions.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('09_format.py')">
-          <i class="fab fa-python"></i> 09_format.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('10_swap-variables.py')">
-          <i class="fab fa-python"></i> 10_swap-variables.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('11_swap-variables-2.py')">
-          <i class="fab fa-python"></i> 11_swap_variables-2.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('12_swap-variables-3.py')">
-          <i class="fab fa-python"></i> 12_swap-variables-3.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('13_list.py')">
-          <i class="fab fa-python"></i> 13_list.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('14_tuple.py')">
-          <i class="fab fa-python"></i> 14_tuple.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('15_dict.py')">
-          <i class="fab fa-python"></i> 15_dict.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('16_input.py')">
-          <i class="fab fa-python"></i> 16_input.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('17_eval.py')">
-          <i class="fab fa-python"></i> 17_eval.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('18_min-max.py')">
-          <i class="fab fa-python"></i> 18_min-max.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('19_print.py')">
-          <i class="fab fa-python"></i> 19_print.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('20_print-2.py')">
-          <i class="fab fa-python"></i> 20_print-2.py
-        </div>
-         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-              hover:bg-blue-500 hover:text-white" onclick="loadCode('21_escape-seq.py')">
-          <i class="fab fa-python"></i> 21_escape-seq.py
-        </div>
+      class="sidebar w-72 bg-white border-r border-gray-300 p-4 flex flex-col gap-4 fixed md:static top-0 left-0 h-full z-50 -translate-x-full md:translate-x-0 overflow-y-auto">
+
+      <!-- Tabs -->
+      <div class="flex justify-between items-center p-1 rounded-lg">
+        <button id="files-tab" class="flex-1 py-2 rounded-md bg-blue-500 text-white font-medium">Files</button>
+        <button id="projects-tab" class="flex-1 py-2 rounded-md text-gray-700">Projects</button>
       </div>
 
+      <!-- Search -->
+      <input id="search-bar" type="text"
+        class="p-2 border border-gray-400 rounded-lg bg-white text-gray-800 mt-2 focus:ring-2 focus:ring-blue-500"
+        placeholder="Search files..." oninput="filterFiles(this.value)" />
 
-      <h3 class="font-semibold">Mini Projects</h3>
-      <div class="file-list flex flex-col gap-2 text-sm">
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-                    hover:bg-blue-500 hover:text-white" onclick="loadCode('c2f.py')">
-          <i class="fab fa-python"></i> c2f.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-                    hover:bg-blue-500 hover:text-white" onclick="loadCode('color.py')">
-          <i class="fab fa-python"></i> color.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-                    hover:bg-blue-500 hover:text-white" onclick="loadCode('color-2.py')">
-          <i class="fab fa-python"></i> color-2.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-                    hover:bg-blue-500 hover:text-white" onclick="loadCode('simpleInterest.py')">
-          <i class="fab fa-python"></i> simpleInterest.py
-        </div>
-        <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-                    hover:bg-blue-500 hover:text-white" onclick="loadCode('rock-paper-scissor.py')">
-          <i class="fab fa-python"></i> rock-paper-scissor.py
-        </div>
-         <div class="file-item p-2 bg-gray-100 dark:bg-gray-700 rounded-lg cursor-pointer 
-                    hover:bg-blue-500 hover:text-white" onclick="loadCode('name2bin.py')">
-          <i class="fab fa-python"></i> name2bin.py
-        </div>
+      <!-- Files List -->
+      <div id="files-section" class="file-list flex flex-col gap-2 max-h-[60vh] overflow-y-auto text-sm mt-2">
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')"><i class="fas fa-file-code"></i> 01_first.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('02_constant.py')"><i class="fas fa-file-code"></i> 02_constant.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('03_indentation.py')"><i class="fas fa-file-code"></i> 03_indentation.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('04_comment.py')"><i class="fas fa-file-code"></i> 04_comment.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('05_complex-num.py')"><i class="fas fa-file-code"></i> 05_complex-num.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('06_bool.py')"><i class="fas fa-file-code"></i> 06_bool.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('07_set.py')"><i class="fas fa-file-code"></i> 07_set.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('08_set-function.py')"><i class="fas fa-file-code"></i> 08_set-function.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('09_format.py')"><i class="fas fa-file-code"></i> 09_format.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('10_swap-variables.py')"><i class="fas fa-file-code"></i> 10_swap-variables.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('11_swap-variables-2.py')"><i class="fas fa-file-code"></i> 11_swap-variables-2.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('12_swap-variables-3.py')"><i class="fas fa-file-code"></i> 12_swap-variables-3.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('13_list.py')"><i class="fas fa-file-code"></i> 13_list.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('14_tuple.py')"><i class="fas fa-file-code"></i> 14_tuple.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('15_dict.py')"><i class="fas fa-file-code"></i> 15_dict.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('16_input.py')"><i class="fas fa-file-code"></i> 16_input.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('17_eval.py')"><i class="fas fa-file-code"></i> 17_eval.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('18_min-max.py')"><i class="fas fa-file-code"></i> 18_min-max.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('19_print.py')"><i class="fas fa-file-code"></i> 19_print.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('20_print-2.py')"><i class="fas fa-file-code"></i> 20_print-2.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('21_escape-seq.py')"><i class="fas fa-file-code"></i> 21_escape-seq.py</div>
+      </div>
+
+      <!-- Projects List -->
+      <div id="projects-section" class="hidden flex flex-col gap-2 max-h-[60vh] overflow-y-auto text-sm mt-2">
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('c2f.py')"><i class="fas fa-file-code"></i> c2f.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('color.py')"><i class="fas fa-file-code"></i> color.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('color-2.py')"><i class="fas fa-file-code"></i> color-2.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('name2bin.py')"><i class="fas fa-file-code"></i> name2bin.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('rock-paper-scissor.py')"><i class="fas fa-file-code"></i> rock-paper-scissor.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('simpleInterest.py')"><i class="fas fa-file-code"></i> simpleInterest.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('python-shop.py')"><i class="fas fa-file-code"></i> python-shop.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('next-alpha.py')"><i class="fas fa-file-code"></i> next-alpha.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('quadratic-eq.py')"><i class="fas fa-file-code"></i> quadratic-eq.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('first10natural.py')"><i class="fas fa-file-code"></i> first10natural.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('reverse-num.py')"><i class="fas fa-file-code"></i> reverse-num.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('gcd.py')"><i class="fas fa-file-code"></i> gcd.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('armstrong-num.py')"><i class="fas fa-file-code"></i> armstrong-num.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('fibonacci-series.py')"><i class="fas fa-file-code"></i> fibonacci-series.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('prime-number.py')"><i class="fas fa-file-code"></i> prime-number.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('pattern-1.py')"><i class="fas fa-file-code"></i> pattern-1.py</div>
+
       </div>
     </aside>
 
-    <!-- 🔹 Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 md:hidden" onclick="toggleSidebar()">
-    </div>
-
-    <!-- 🔹 Content -->
+    <!-- Content -->
     <section class="content flex-1 p-6 overflow-y-auto fade-in">
+      <!-- Buttons -->
       <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
-        <h2 class="text-2xl font-semibold flex items-center gap-2"><i class="fas fa-eye"></i> Code Preview</h2>
         <div class="flex gap-2">
           <button id="copy-btn"
             class="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center gap-1"
             onclick="copyCode()">
             <i class="fas fa-copy"></i> Copy
           </button>
+
           <button id="download-btn"
             class="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-1"
             onclick="downloadCode()">
             <i class="fas fa-download"></i> Download
           </button>
-          <button id="run-btn"
-            class="hidden p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center gap-1"
-            onclick="runPythonCode()">
-            <i class="fas fa-play"></i> Run Python
-          </button>
+
+          <!-- View Output removed/disabled -->
+          <!-- <button id="view-btn" class="p-2 bg-gray-400 text-white rounded-lg cursor-not-allowed flex items-center gap-1" disabled>
+            <i class="fas fa-eye"></i> View Output (Disabled)
+          </button> -->
         </div>
       </div>
 
-      <div class="code-container rounded-lg overflow-x-auto">
-        <pre class="line-numbers p-4"></pre>
-        <pre class="p-4"><code id="code-block" class="language-none"></code></pre>
-      </div>
-
-      <!-- Live Preview -->
-      <iframe id="live-preview" class="w-full h-60 sm:h-72 md:h-[300px] mt-6 rounded-lg shadow-lg bg-white"></iframe>
-
-      <!-- Python Output -->
-      <div id="python-output-box" class="hidden mt-6">
-        <h3 class="font-semibold text-lg"> Output:</h3>
-        <pre id="python-output" class="bg-black text-green-400 p-3 rounded-lg"></pre>
+      <!-- Code Display -->
+      <div class="code-output-container">
+        <div class="code-block-wrapper">
+          <pre class="line-numbers" id="line-numbers"></pre>
+          <pre><code id="code-block" class="code language-python"></code></pre>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- 🔹 Settings Panel -->
-  <div id="settings-panel"
-    class="settings-panel fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 border-l 
-                                  border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform">
-    <h3 class="text-lg font-semibold mb-4"><i class="fas fa-sliders-h"></i> Settings</h3>
-    <label class="block mb-1">Font Size</label>
-    <input type="range" id="font-size-slider" min="12" max="24" value="16" class="w-full"
-      oninput="changeFontSize(this.value)">
-    <button class="mt-4 p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 w-full" onclick="toggleSettings()">
-      Close
-    </button>
-  </div>
-
-  <!-- 🔹 Scripts -->
+  <!-- Highlight.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   <script>
     let currentFilename = '';
@@ -275,25 +200,19 @@
         currentFilename = filename;
 
         const codeBlock = document.getElementById("code-block");
-        const ext = filename.split('.').pop();
+        const lineNumbers = document.getElementById("line-numbers");
 
-        if (ext === "css") codeBlock.className = "language-css";
-        else if (ext === "js") codeBlock.className = "language-javascript";
-        else if (ext === "py") codeBlock.className = "language-python";
-        else codeBlock.className = "language-html";
-
+        codeBlock.className = "code language-python";
         codeBlock.textContent = text;
         hljs.highlightElement(codeBlock);
-        updateLineNumbers(text);
 
-        document.getElementById("live-preview").style.display = ext === "html" ? "block" : "none";
-        if (ext === "html") document.getElementById("live-preview").srcdoc = text;
+        // Line numbers
+        const lines = text.split('\n').length;
+        lineNumbers.textContent = Array.from({ length: lines }, (_, i) => i + 1).join('\n');
 
-        document.getElementById("run-btn").classList.toggle("hidden", ext !== "py");
-        document.getElementById("python-output-box").classList.add("hidden");
       } catch (err) {
         document.getElementById("code-block").textContent = "⚠️ " + err.message;
-        document.querySelector(".line-numbers").textContent = "";
+        document.getElementById("line-numbers").textContent = "";
       }
     }
 
@@ -312,52 +231,45 @@
       URL.revokeObjectURL(url);
     }
 
-    function updateLineNumbers(text) {
-      document.querySelector(".line-numbers").textContent =
-        Array.from({ length: text.split('\n').length }, (_, i) => i + 1).join('\n');
-    }
-
-    function toggleSettings() {
-      document.getElementById("settings-panel").classList.toggle("translate-x-full");
-    }
-
-    function changeFontSize(size) {
-      document.getElementById("code-block").style.fontSize = `${size}px`;
-      document.querySelector(".line-numbers").style.fontSize = `${size}px`;
-    }
-
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
-
+      const icon = document.getElementById("hamburger-icon");
       sidebar.classList.toggle("-translate-x-full");
       overlay.classList.toggle("hidden");
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-times");
     }
 
-    // 🐍 Run Python
-    function runPythonCode() {
-      let code = document.getElementById("code-block").textContent;
-      let outputBox = document.getElementById("python-output");
-      let container = document.getElementById("python-output-box");
-      outputBox.textContent = "";
-      container.classList.remove("hidden");
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.add("-translate-x-full");
+      document.getElementById("overlay").classList.add("hidden");
+      document.getElementById("hamburger-icon").classList.add("fa-bars");
+      document.getElementById("hamburger-icon").classList.remove("fa-times");
+    }
 
-      function builtinRead(x) {
-        if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-          throw "File not found: '" + x + "'";
-        return Sk.builtinFiles["files"][x];
-      }
+    document.getElementById("files-tab").addEventListener("click", () => {
+      document.getElementById("files-section").classList.remove("hidden");
+      document.getElementById("projects-section").classList.add("hidden");
+      document.getElementById("search-bar").style.display = "block";
+      document.getElementById("files-tab").classList.add("bg-blue-500", "text-white");
+      document.getElementById("projects-tab").classList.remove("bg-blue-500", "text-white");
+    });
 
-      Sk.configure({
-        output: (text) => { outputBox.textContent += text; },
-        read: builtinRead,
+    document.getElementById("projects-tab").addEventListener("click", () => {
+      document.getElementById("files-section").classList.add("hidden");
+      document.getElementById("projects-section").classList.remove("hidden");
+      document.getElementById("search-bar").style.display = "none";
+      document.getElementById("projects-tab").classList.add("bg-blue-500", "text-white");
+      document.getElementById("files-tab").classList.remove("bg-blue-500", "text-white");
+    });
+
+    function filterFiles(query) {
+      document.querySelectorAll("#files-section .file-item").forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(query.toLowerCase()) ? "flex" : "none";
       });
-
-      Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true))
-        .catch((err) => { outputBox.textContent = err.toString(); });
     }
   </script>
 </body>
-
 
 </html>
