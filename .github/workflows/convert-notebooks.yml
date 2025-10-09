@@ -1,36 +1,49 @@
-name: Convert Jupyter Notebooks to HTML
+name: Convert Notebooks to HTML
+
+# Trigger when any notebook changes
 on:
   push:
     paths:
-      - '**.ipynb'  # jab bhi koi notebook change ho
+      - "notebooks/*.ipynb"
+
+# Give GitHub Action write permission to repo
+permissions:
+  contents: write
 
 jobs:
-  build:
+  convert:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Setup Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
+      # Step 3: Install Jupyter and nbconvert
       - name: Install Jupyter
         run: pip install jupyter nbconvert
 
-      - name: Convert Notebooks to HTML
+      # Step 4: Convert all notebooks to HTML
+      - name: Convert Notebooks
         run: |
           mkdir -p notebooks
           for file in notebooks/*.ipynb; do
             jupyter nbconvert --to html "$file" --output-dir notebooks/
           done
 
-      - name: Commit and push HTML files
+      # Step 5: Commit & push HTML files back to repo
+      - name: Commit and Push HTML
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "GitHub Action"
-          git config --global user.email "actions@github.com"
+          git config --global user.email "action@github.com"
           git add notebooks/*.html
           git commit -m "Auto-converted notebooks" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
