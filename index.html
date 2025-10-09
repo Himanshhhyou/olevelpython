@@ -99,6 +99,7 @@
       <div class="flex justify-between items-center p-1 rounded-lg">
         <button id="files-tab" class="flex-1 py-2 rounded-md bg-blue-500 text-white font-medium">Files</button>
         <button id="projects-tab" class="flex-1 py-2 rounded-md text-gray-700">Projects</button>
+        <button id="notebook-tab" class="flex-1 py-2 rounded-md text-gray-700">Notebook</button>
       </div>
 
       <!-- Search -->
@@ -163,8 +164,10 @@
         <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('pan_number-check.py')"><i class="fas fa-file-code"></i> pan_number-check.py</div>
         <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('birthday_check.py')"><i class="fas fa-file-code"></i> birthday-check.py</div>
         <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('number-guess-game.py')"><i class="fas fa-file-code"></i> number-guess-game.py</div>
+      </div>
 
-
+      <div id="notebook-section" class="hidden flex flex-col gap-2 max-h-[80vh] overflow-y-auto text-sm mt-2">
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white"><i class="fas fa-file-code"></i> <a href="notebooks/ch4.html">Chapter 4</a></div>
       </div>
     </aside>
 
@@ -266,6 +269,7 @@
     document.getElementById("files-tab").addEventListener("click", () => {
       document.getElementById("files-section").classList.remove("hidden");
       document.getElementById("projects-section").classList.add("hidden");
+      document.getElementById("notebook-section").classList.add("hidden");
       document.getElementById("search-bar").style.display = "block";
       document.getElementById("files-tab").classList.add("bg-blue-500", "text-white");
       document.getElementById("projects-tab").classList.remove("bg-blue-500", "text-white");
@@ -274,8 +278,17 @@
     document.getElementById("projects-tab").addEventListener("click", () => {
       document.getElementById("files-section").classList.add("hidden");
       document.getElementById("projects-section").classList.remove("hidden");
+      document.getElementById("notebook-section").classList.add("hidden");
       document.getElementById("search-bar").style.display = "none";
       document.getElementById("projects-tab").classList.add("bg-blue-500", "text-white");
+      document.getElementById("files-tab").classList.remove("bg-blue-500", "text-white");
+    });
+    document.getElementById("notebook-tab").addEventListener("click", () => {
+      document.getElementById("files-section").classList.add("hidden");
+      document.getElementById("projects-section").classList.add("hidden");
+      document.getElementById("notebook-section").classList.remove("hidden");
+      document.getElementById("search-bar").style.display = "none";
+      document.getElementById("notebook-tab").classList.add("bg-blue-500", "text-white");
       document.getElementById("files-tab").classList.remove("bg-blue-500", "text-white");
     });
 
