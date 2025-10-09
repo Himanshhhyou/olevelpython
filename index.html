@@ -106,31 +106,34 @@
         class="p-2 border border-gray-400 rounded-lg bg-white text-gray-800 mt-2 focus:ring-2 focus:ring-blue-500"
         placeholder="Search files..." oninput="filterFiles(this.value)" />
 
-      <!-- Files List -->
-      <div id="files-section" class="file-list flex flex-col gap-2 max-h-[80vh] overflow-y-auto text-sm mt-2">
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')"><i class="fas fa-file-code"></i> 01_first.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('02_constant.py')"><i class="fas fa-file-code"></i> 02_constant.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('03_indentation.py')"><i class="fas fa-file-code"></i> 03_indentation.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('04_comment.py')"><i class="fas fa-file-code"></i> 04_comment.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('05_complex-num.py')"><i class="fas fa-file-code"></i> 05_complex-num.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('06_bool.py')"><i class="fas fa-file-code"></i> 06_bool.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('07_set.py')"><i class="fas fa-file-code"></i> 07_set.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('08_set-function.py')"><i class="fas fa-file-code"></i> 08_set-function.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('09_format.py')"><i class="fas fa-file-code"></i> 09_format.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('10_swap-variables.py')"><i class="fas fa-file-code"></i> 10_swap-variables.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('11_swap-variables-2.py')"><i class="fas fa-file-code"></i> 11_swap-variables-2.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('12_swap-variables-3.py')"><i class="fas fa-file-code"></i> 12_swap-variables-3.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('13_list.py')"><i class="fas fa-file-code"></i> 13_list.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('14_tuple.py')"><i class="fas fa-file-code"></i> 14_tuple.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('15_dict.py')"><i class="fas fa-file-code"></i> 15_dict.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('16_input.py')"><i class="fas fa-file-code"></i> 16_input.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('17_eval.py')"><i class="fas fa-file-code"></i> 17_eval.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('18_min-max.py')"><i class="fas fa-file-code"></i> 18_min-max.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('19_print.py')"><i class="fas fa-file-code"></i> 19_print.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('20_print-2.py')"><i class="fas fa-file-code"></i> 20_print-2.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('21_escape-seq.py')"><i class="fas fa-file-code"></i> 21_escape-seq.py</div>
-        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('22_dec2bin.py')"><i class="fas fa-file-code"></i> 22_dec2bin.py</div>
+        <!-- Files List -->
+        <div id="files-section" class="file-list flex flex-col gap-2 max-h-[80vh] overflow-y-auto text-sm mt-2">
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('26_arithmatic-operators.py')"><i class="fas fa-file-code"></i> 26_arithmatic-operators.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('25_ternary-operator.py')"><i class="fas fa-file-code"></i> 25_ternary-operator.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('24_linear-search.py')"><i class="fas fa-file-code"></i> 24_linear-search.py</div>
         <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('23_calendar.py')"><i class="fas fa-file-code"></i> 23_calendar.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('22_dec2bin.py')"><i class="fas fa-file-code"></i> 22_dec2bin.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('21_escape-seq.py')"><i class="fas fa-file-code"></i> 21_escape-seq.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('20_print-2.py')"><i class="fas fa-file-code"></i> 20_print-2.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('19_print.py')"><i class="fas fa-file-code"></i> 19_print.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('18_min-max.py')"><i class="fas fa-file-code"></i> 18_min-max.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('17_eval.py')"><i class="fas fa-file-code"></i> 17_eval.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('16_input.py')"><i class="fas fa-file-code"></i> 16_input.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('15_dict.py')"><i class="fas fa-file-code"></i> 15_dict.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('14_tuple.py')"><i class="fas fa-file-code"></i> 14_tuple.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('13_list.py')"><i class="fas fa-file-code"></i> 13_list.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('12_swap-variables-3.py')"><i class="fas fa-file-code"></i> 12_swap-variables-3.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('11_swap-variables-2.py')"><i class="fas fa-file-code"></i> 11_swap-variables-2.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('10_swap-variables.py')"><i class="fas fa-file-code"></i> 10_swap-variables.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('09_format.py')"><i class="fas fa-file-code"></i> 09_format.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('08_set-function.py')"><i class="fas fa-file-code"></i> 08_set-function.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('07_set.py')"><i class="fas fa-file-code"></i> 07_set.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('06_bool.py')"><i class="fas fa-file-code"></i> 06_bool.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('05_complex-num.py')"><i class="fas fa-file-code"></i> 05_complex-num.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('04_comment.py')"><i class="fas fa-file-code"></i> 04_comment.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('03_indentation.py')"><i class="fas fa-file-code"></i> 03_indentation.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('02_constant.py')"><i class="fas fa-file-code"></i> 02_constant.py</div>
+        <div class="file-item p-2 flex items-center gap-2 bg-gray-100 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white" onclick="loadCode('01_first.py')"><i class="fas fa-file-code"></i> 01_first.py</div>
       </div>
 
       <!-- Projects List -->
