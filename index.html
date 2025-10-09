@@ -273,8 +273,9 @@
       document.getElementById("search-bar").style.display = "block";
       document.getElementById("files-tab").classList.add("bg-blue-500", "text-white");
       document.getElementById("projects-tab").classList.remove("bg-blue-500", "text-white");
+      document.getElementById("notebook-tab").classList.remove("bg-blue-500", "text-white");
     });
-
+    
     document.getElementById("projects-tab").addEventListener("click", () => {
       document.getElementById("files-section").classList.add("hidden");
       document.getElementById("projects-section").classList.remove("hidden");
@@ -282,6 +283,7 @@
       document.getElementById("search-bar").style.display = "none";
       document.getElementById("projects-tab").classList.add("bg-blue-500", "text-white");
       document.getElementById("files-tab").classList.remove("bg-blue-500", "text-white");
+      document.getElementById("notebook-tab").classList.remove("bg-blue-500", "text-white");
     });
     document.getElementById("notebook-tab").addEventListener("click", () => {
       document.getElementById("files-section").classList.add("hidden");
@@ -290,6 +292,7 @@
       document.getElementById("search-bar").style.display = "none";
       document.getElementById("notebook-tab").classList.add("bg-blue-500", "text-white");
       document.getElementById("files-tab").classList.remove("bg-blue-500", "text-white");
+      document.getElementById("projects-tab").classList.remove("bg-blue-500", "text-white");
     });
 
     function filterFiles(query) {
