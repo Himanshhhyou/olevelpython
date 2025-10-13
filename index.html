@@ -70,11 +70,13 @@
         opacity: 1;
       }
     }
+
     .new-label {
-    animation: pulseGlow 1.5s infinite;
-    top: 10px;
-    right: 8px;
-  }
+      animation: pulseGlow 1.5s infinite;
+      top: 10px;
+      right: 8px;
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -284,21 +286,25 @@
           onclick="loadCode('number-guess-game.py')"><i class="fa-brands fa-python"></i> number-guess-game.py</div>
       </div>
 
-      <a href="notebooks/ch4.html">
-        <div
-          class="file-item p-2 flex items-center gap-2 bg-indigo-500 text-white rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white relative"
-          onclick="loadCode('mini-projects/button-design.html')">
 
-          <i class="fa-solid fa-book"></i>
-          <span>Chapter 4</span>
+      <div id="notebook-section" class="hidden flex flex-col gap-2 max-h-[80vh] overflow-y-auto text-sm mt-2">
 
-          <!-- Animated NEW Label -->
-          <span
-            class="new-label absolute text-red-500 bg-white text-xs font-bold px-2 py-0.5 rounded-full animate-pulse shadow-lg">
-            NEW
-          </span>
-        </div>
-      </a>
+        <a href="notebooks/ch4.html">
+          <div
+            class="file-item p-2 flex items-center gap-2 bg-indigo-500 text-white rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white relative"
+            onclick="loadCode('mini-projects/button-design.html')">
+
+            <i class="fa-solid fa-book"></i>
+            <span>Chapter 4</span>
+
+            <!-- Animated NEW Label -->
+            <span
+              class="new-label absolute text-red-500 bg-white text-xs font-bold px-2 py-0.5 rounded-full animate-pulse shadow-lg">
+              NEW
+            </span>
+          </div>
+        </a>
+      </div>
 
     </aside>
 
