@@ -7539,6 +7539,7 @@ a.anchor-link {
 <li><strong><a href="#==-and-is-operator">== and is operator</a></strong></li>
 <li><strong><a href="#Assignment-operator">Assignment operator</a></strong></li>
 <li><strong><a href="#Logical-operator">Logical operator</a></strong></li>
+<li><strong><a href="#Bitwise-Operator">Bitwise operator</a></strong></li>
 </ol>
 <hr/>
 </div>
@@ -8252,6 +8253,337 @@ False
 True
 True
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=562180da-05d2-4540-9e37-812b94fd3ab0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Bitwise-Operator">Bitwise Operator<a class="anchor-link" href="#Bitwise-Operator">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=54f04e9a-f2c3-4436-9a45-144ae15a9619">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="And-Bitwise-Operator">And Bitwise Operator<a class="anchor-link" href="#And-Bitwise-Operator">¶</a></h3>
+</div>
+</div>
+</div>
+</div>A     B     Result
+-------------------
+0     0       0
+0     1       0
+1     0       0
+1     1       1<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ca53a77d-b807-4ed8-bc1d-ab7f26a7dc47">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">&amp;</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">#0010  ---&gt; 2</span>
+<span class="c1">#0011  ---&gt; 3</span>
+<span class="c1">#--------------</span>
+<span class="c1">#0010  ---&gt; 2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="mi">15</span><span class="o">&amp;</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1">#01111  ---&gt; 15</span>
+<span class="c1">#10000  ---&gt; 16</span>
+<span class="c1">#------------------</span>
+<span class="c1">#00000  ---&gt; 0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="mi">64</span><span class="o">&amp;</span><span class="mi">46</span><span class="p">)</span>
+<span class="c1">#1000000   ---&gt; 64</span>
+<span class="c1">#0101110   ---&gt; 46</span>
+<span class="c1">#-------------------</span>
+<span class="c1">#0000000   ----&gt; 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>2
+0
+0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8231c4aa-ff29-45d7-9099-224b1dc27934">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="OR-Bitwise-operator">OR Bitwise operator<a class="anchor-link" href="#OR-Bitwise-operator">¶</a></h3>
+</div>
+</div>
+</div>
+</div>A     B     Result
+-------------------
+0     0       0
+0     1       1
+1     0       1
+1     1       1<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=38e2af54-9d8e-4886-a881-f9a32444f2ea">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">15</span><span class="o">|</span><span class="mi">12</span><span class="p">)</span>
+<span class="c1">#1111 ---&gt; 15</span>
+<span class="c1">#1100 ---&gt; 12</span>
+<span class="c1">#--------------</span>
+<span class="c1">#1111 ---&gt; 15</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="mi">32</span><span class="o">|</span><span class="mi">32</span><span class="p">)</span>
+<span class="c1">#100000  ---&gt; 32</span>
+<span class="c1">#100000  ---&gt; 32</span>
+<span class="c1">#---------------</span>
+<span class="c1">#100000  ---&gt; 32</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="mi">80</span><span class="o">|</span><span class="mi">8</span><span class="p">)</span>
+<span class="c1">#1010000 ---&gt; 80</span>
+<span class="c1">#0001000 ---&gt; 8</span>
+<span class="c1">#--------------</span>
+<span class="c1">#1011000 ---&gt; 88</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8a75b170-0b89-4d40-9922-7ff46813943c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">80</span><span class="p">))</span> <span class="c1">#dec 2 bin</span>
+<span class="nb">print</span><span class="p">(</span><span class="mb">0b1010000</span><span class="p">)</span> <span class="c1"># bin 2 dec</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0b1010000
+80
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e3bfb8c-ddd0-447c-922c-0bd674338906">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="XOR-Table">XOR Table<a class="anchor-link" href="#XOR-Table">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=84cddcc9-ad94-4b35-979f-fe35810c76e7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">A</span>     <span class="n">B</span>     <span class="n">Result</span>
+<span class="o">-------------------</span>
+<span class="mi">0</span>     <span class="mi">0</span>       <span class="mi">0</span>
+<span class="mi">0</span>     <span class="mi">1</span>       <span class="mi">1</span>
+<span class="mi">1</span>     <span class="mi">0</span>       <span class="mi">1</span>
+<span class="mi">1</span>     <span class="mi">1</span>       <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6f516d11-eca6-4848-9e17-d8ec451959aa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">#0100  ---&gt; 4</span>
+<span class="c1">#0010  ---&gt; 2</span>
+<span class="c1">#------------</span>
+<span class="c1">#0110  ---&gt; 6</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>6
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=85a60458-176e-4e56-882a-6f7e7d189b81">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="One's-Compliment-(Not)">One's Compliment (Not)<a class="anchor-link" href="#One's-Compliment-(Not)">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3f8c8ec-810d-43d1-b5c1-6050b78cfa19">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>-(num+1)</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d4712641-a10d-4c34-9bd7-a35c8f1dd847">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">~-</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>-5
+7
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5f8938c2-5cdc-4786-8547-d1c21aecdfb4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="right-shift-operator">right shift operator<a class="anchor-link" href="#right-shift-operator">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9c6b67cf-66ef-40ed-9796-b9b10334f9bb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">#0011  ---&gt; 3</span>
+<span class="c1">#0000  ---- 0 (result)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">30</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">#11110 ---&gt; 30</span>
+<span class="c1">#00011  ---&gt; 3 (result)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0
+3
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=89d17af8-a450-4a11-9017-c4b35bffb4b9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>'0b11110'</pre>
 </div>
 </div>
 </div>
