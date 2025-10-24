@@ -7544,6 +7544,7 @@ a.anchor-link {
 <li><strong><a href="#Precedence">Precedence</a></strong></li>
 <li><strong><a href="#Conditional-Statement">Conditional Statement</a></strong></li>
 <li><strong><a href="#While-Loop">While Loop</a></strong></li>
+<li><strong><a href="#While-Loop">While Loop</a></strong></li>
 </ol>
 <hr/>
 </div>
@@ -9444,16 +9445,156 @@ Ram Singh - Hello Mr./Mrs. {Singh} (use ---&gt; find(), slicing)</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=420d2fce-fe37-4e69-a94f-ffa9275a2a85">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=526bc442-4299-483f-bddb-d08f8a123de8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Pass,-Break,-Continue">Pass, Break, Continue<a class="anchor-link" href="#Pass,-Break,-Continue">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dd69daed-0474-48d8-ae38-648589d9799e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">while</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">50</span><span class="p">:</span>
+    <span class="c1">#print(i)</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">10</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"---------------------------"</span><span class="p">)</span>
+<span class="n">k</span><span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+        <span class="n">k</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> 
+        <span class="n">k</span><span class="o">+=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"---------------------------"</span><span class="p">)</span>
+
+        
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"B"</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>---------------------------
+1
+2
+4
+5
+---------------------------
+B
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f3170593-f27e-4260-9ea5-b995b68c5b32">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="While-loop--with-else">While loop  with else<a class="anchor-link" href="#While-loop--with-else">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7959eafa-ba96-4521-b654-ef6eccbbfac3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">a</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">7</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Mujhe forefully break kiya"</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"All Iterations completed"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1
+2
+3
+4
+5
+All Iterations completed
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6b79f9c8-38c3-4f86-bd80-27b6c9f42387">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">while</span> <span class="n">a</span><span class="o">&lt;</span><span class="n">num</span><span class="p">:</span> <span class="c1">#2-10</span>
+    <span class="k">if</span> <span class="n">num</span><span class="o">%</span><span class="k">a</span>==0:
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Not Prime"</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Prime"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Not Prime
+</pre>
 </div>
 </div>
 </div>
