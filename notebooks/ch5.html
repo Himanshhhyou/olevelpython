@@ -8544,13 +8544,67 @@ dict_values([1, 2, 3])
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#SHOP</span>
+<span class="c1"># Predefined fruit price list</span>
+<span class="n">fruit_shop</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"mango"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"kiwi"</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="s2">"apple"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">"lemon"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"orange"</span><span class="p">:</span> <span class="mi">50</span>
+<span class="p">}</span>
+
+<span class="c1"># Lists to store cart details</span>
+<span class="n">cart_items</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">quantities</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># User input loop</span>
+<span class="n">repeat</span> <span class="o">=</span> <span class="s2">"y"</span>
+<span class="k">while</span> <span class="n">repeat</span> <span class="o">==</span> <span class="s2">"y"</span><span class="p">:</span>
+    <span class="n">item_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"</span><span class="se">\U0001F34A</span><span class="s2"> Enter the fruit you want to buy: "</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">item_name</span> <span class="ow">in</span> <span class="n">fruit_shop</span><span class="p">:</span>
+        <span class="n">cart_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_name</span><span class="p">)</span>
+        <span class="n">item_quantity</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\U0001F4E6</span><span class="s2"> Enter quantity of </span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2">: "</span><span class="p">))</span>
+        <span class="n">quantities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_quantity</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\u2705</span><span class="s2"> </span><span class="si">{</span><span class="n">item_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> added successfully!</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>   <span class="c1"># ✅</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\u274C</span><span class="s2"> Sorry, </span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2"> is not available right now.</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># ❌</span>
+
+    <span class="n">repeat</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"</span><span class="se">\U0001F501</span><span class="s2"> Do you want to buy something else? (y/n): "</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="c1"># Display cart summary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\U0001F6D2</span><span class="s2"> Your Cart Summary:"</span><span class="p">)</span>
+<span class="n">total_amount</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cart_items</span><span class="p">)):</span>
+    <span class="n">fruit</span> <span class="o">=</span> <span class="n">cart_items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">quantity</span> <span class="o">=</span> <span class="n">quantities</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">fruit_shop</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">*</span> <span class="n">quantity</span>
+    <span class="n">total_amount</span> <span class="o">+=</span> <span class="n">price</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\U0001F34F</span><span class="s2"> </span><span class="si">{</span><span class="n">fruit</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2"> = ₹</span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n\U0001F4B0</span><span class="s2"> Total Amount: ₹</span><span class="si">{</span><span class="n">total_amount</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\u2728</span><span class="s2"> ****** Thanks for shopping with us! ****** </span><span class="se">\u2728</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c75d5ca6-7c60-491b-aa00-c925b4e34292">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8ae43dcf-cd38-443f-89de-65b9f8347567">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
