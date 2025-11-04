@@ -7519,6 +7519,11 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Table-of-contents">Table of contents<a class="anchor-link" href="#Table-of-contents">¶</a></h1><ol>
 <li><strong><a href="#List">List</a></strong></li>
+<li><strong><a href="#Quetion-43-and-48-From-ch3">Quetion 43 and 48 From ch3</a></strong></li>
+<li><strong><a href="#The-main-properties-of-List">The main properties of List</a></strong></li>
+<li><strong><a href="#Tuples">Tuples</a></strong></li>
+<li><strong><a href="#Dictionary">Dictionary</a></strong></li>
+<li></li>
 </ol>
 </div>
 </div>
@@ -7534,19 +7539,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ab1a8c5a-a444-491a-9d37-76e1f03d63b9">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4c13b850-67e9-49b9-8728-1a3b8a3497bd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">-</span> <span class="n">Store</span> <span class="n">multiple</span> <span class="n">values</span>
-<span class="o">-</span> <span class="n">Ordered</span>
-<span class="o">-</span> <span class="n">Indexing</span> <span class="n">Possible</span>
-</pre></div>
-</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>Store multiple values</li>
+<li>Ordered</li>
+<li>Indexing Possible</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7680,7 +7684,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d50bb398-c6cf-44fb-a15d-492ddaf02f71">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e02c3319-627a-4060-a5ee-5e46e202cc28">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="The-main-properties-of-List">The main properties of List<a class="anchor-link" href="#The-main-properties-of-List">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e5931594-40b1-46b3-961c-67d90d2306d9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7688,29 +7703,31 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## The main properties of LISTs</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#insertion order</span>
+<span class="n">a</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a = "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="c1">#duplicate values are allowed</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"b = "</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1">#Heterogeneous items विविधता (अलग-अलग)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ram"</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">47.6</span><span class="p">,</span> <span class="mi">9</span><span class="o">+</span><span class="mi">6</span><span class="n">j</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"c = "</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="c1">#indexing possible</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="s2">"RamKrishna"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">:])</span>
+<span class="c1"># indexing - list</span>
+<span class="c1">#slicing  - string(list item)</span>
+
+
+<span class="c1">#slicing list</span>
+<span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd71a51a-08e2-467e-9b3f-692f0adfa231">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="insertion-order">insertion order<a class="anchor-link" href="#insertion-order">¶</a></h1><p>a  = [5,6,7]
-print("a = ", a)</p>
-<h1 id="duplicate-values-are-allowed">duplicate values are allowed<a class="anchor-link" href="#duplicate-values-are-allowed">¶</a></h1><p>b = [5,3,5,3,8]
-print("b = ", b)</p>
-<h1 id="Heterogeneous-items-%E0%A4%B5%E0%A4%BF%E0%A4%B5%E0%A4%BF%E0%A4%A7%E0%A4%A4%E0%A4%BE-(%E0%A4%85%E0%A4%B2%E0%A4%97-%E0%A4%85%E0%A4%B2%E0%A4%97)">Heterogeneous items विविधता (अलग-अलग)<a class="anchor-link" href="#Heterogeneous-items-%E0%A4%B5%E0%A4%BF%E0%A4%B5%E0%A4%BF%E0%A4%A7%E0%A4%A4%E0%A4%BE-(%E0%A4%85%E0%A4%B2%E0%A4%97-%E0%A4%85%E0%A4%B2%E0%A4%97)">¶</a></h1><p>c = ["ram", 8, 47.6, 9+6j, True]
-print("c = ", c)</p>
-<h1 id="indexing-possible">indexing possible<a class="anchor-link" href="#indexing-possible">¶</a></h1><p>d = [4,6,7,"RamKrishna"]
-print(d[3][3:])</p>
-<h1 id="indexing---list">indexing - list<a class="anchor-link" href="#indexing---list">¶</a></h1><h1 id="slicing----string(list-item)">slicing  - string(list item)<a class="anchor-link" href="#slicing----string(list-item)">¶</a></h1><h1 id="slicing-list">slicing list<a class="anchor-link" href="#slicing-list">¶</a></h1><p>e = [4,5,9,1]
-print(e[1:])</p>
 </div>
 </div>
 </div>
@@ -8532,6 +8549,20 @@ z
 dict_keys(['x', 'y', 'z'])
 dict_values([1, 2, 3])
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=55469702-bbba-4072-ac75-9587ffed1575">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Grocery</span>
+</pre></div>
 </div>
 </div>
 </div>
