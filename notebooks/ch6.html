@@ -8617,6 +8617,8 @@ Hey meet me at 5pm By the way 5pm is important!
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Enter your name(include Mr./Mrs.): "</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="n">n</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
 
+<span class="c1">#mrs ram</span>
+
 <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"mrs"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is my friend"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"She live in naini"</span><span class="p">)</span>
@@ -8626,6 +8628,131 @@ Hey meet me at 5pm By the way 5pm is important!
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please include Mr. or Mrs."</span><span class="p">)</span>
     
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=86d47335-0d24-4f56-9f5d-92edcd9b5bf6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fruit</span> <span class="o">=</span> <span class="s2">"Orange"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'ange'</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>True
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=34040b1d-d2c2-40e3-a5be-11bed178d900">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Ashϋtόsh"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"ascii"</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s2">"backslashreplace"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"ascii"</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">"ascii"</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s2">"namereplace"</span><span class="p">))</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="s2">"™µ≤∞Ω∑αβ"</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">"  ==&gt;  "</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"ascii"</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s2">"namereplace"</span><span class="p">))</span>
+
+
+<span class="n">sc</span> <span class="o">=</span> <span class="s2">"µ≤∞Ω"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"ascii"</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s2">"xmlcharrefreplace"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>b'Ash\\u03cbt\\u03ccsh'
+b'Ashtsh'
+b'Ash\\N{GREEK SMALL LETTER UPSILON WITH DIALYTIKA}t\\N{GREEK SMALL LETTER OMICRON WITH TONOS}sh'
+™  ==&gt;  b'\\N{TRADE MARK SIGN}'
+µ  ==&gt;  b'\\N{MICRO SIGN}'
+≤  ==&gt;  b'\\N{LESS-THAN OR EQUAL TO}'
+∞  ==&gt;  b'\\N{INFINITY}'
+Ω  ==&gt;  b'\\N{OHM SIGN}'
+∑  ==&gt;  b'\\N{N-ARY SUMMATION}'
+α  ==&gt;  b'\\N{GREEK SMALL LETTER ALPHA}'
+β  ==&gt;  b'\\N{GREEK SMALL LETTER BETA}'
+b'&amp;#181;&amp;#8804;&amp;#8734;&amp;#8486;'
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a9ad5513-bbd7-4aad-878b-157d1225dda6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Ram Singh"</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>b'Ram Singh'
+Ram Singh
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5f3bfec3-500f-4740-9c9e-da80908638f6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>
