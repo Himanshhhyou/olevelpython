@@ -1,0 +1,5 @@
+ Orange added successfully!
+
+ Your Cart Summary: Orange x 4 = 200
+ Total Amount: 200
+****** Thanks for shopping with us! ******
